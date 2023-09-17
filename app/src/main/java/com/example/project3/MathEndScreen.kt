@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.NavHostFragment
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [StartScreen.newInstance] factory method to
+ * Use the [MathEndScreen.newInstance] factory method to
  * create an instance of this fragment.
  */
-class StartScreen : Fragment() {
+class MathEndScreen : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,23 +32,30 @@ class StartScreen : Fragment() {
         }
     }
 
+    fun GetScoreString() : String
+    {
+        // TODO
+        return "score of maxscore"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_start_screen, container, false)
+        val view = inflater.inflate(R.layout.fragment_math_end_screen, container, false)
 
-        var mathapp = MathApp.instance
+        val scoreText = view.findViewById<TextView>(R.id.textScore)
+        scoreText.setText(GetScoreString())
 
-        val startButton = view.findViewById<Button>(R.id.bStart)
-        startButton.setOnClickListener {
+        val startOverButton = view.findViewById<Button>(R.id.bStartOver)
+        startOverButton.setOnClickListener {
             val fm = parentFragmentManager
             if (fm != null)
             {
-                val startScreen = fm.findFragmentById(R.id.nav_host_fragment) as StartScreen
+                val startScreen = fm.findFragmentById(R.id.nav_host_fragment) as MathEndScreen
                 val navController = startScreen.findNavController()
-                navController.navigate(R.id.action_startScreen_to_mathScreen)
+                navController.navigate(R.id.action_mathEndScreen_to_startScreen)
             }
         }
 
@@ -63,12 +69,12 @@ class StartScreen : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment StartScreen.
+         * @return A new instance of fragment MathEndScreen.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StartScreen().apply {
+            MathEndScreen().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

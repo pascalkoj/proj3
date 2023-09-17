@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +38,18 @@ class MathScreen : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_math_screen, container, false)
+
+
+        val doneButton = view.findViewById<Button>(R.id.bDone)
+        doneButton.setOnClickListener {
+            val fm = parentFragmentManager
+            if (fm != null)
+            {
+                val startScreen = fm.findFragmentById(R.id.nav_host_fragment) as MathScreen
+                val navController = startScreen.findNavController()
+                navController.navigate(R.id.action_mathScreen_to_mathEndScreen)
+            }
+        }
 
         return view
     }

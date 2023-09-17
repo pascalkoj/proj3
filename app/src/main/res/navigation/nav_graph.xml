@@ -27,5 +27,17 @@
         <action
             android:id="@+id/action_mathScreen_to_startScreen"
             app:destination="@id/startScreen" />
+        <action
+            android:id="@+id/action_mathScreen_to_mathEndScreen"
+            app:destination="@id/mathEndScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathEndScreen"
+        android:name="com.example.project3.MathEndScreen"
+        android:label="fragment_math_end_screen"
+        tools:layout="@layout/fragment_math_end_screen" >
+        <action
+            android:id="@+id/action_mathEndScreen_to_startScreen"
+            app:destination="@id/startScreen" />
     </fragment>
 </navigation>
