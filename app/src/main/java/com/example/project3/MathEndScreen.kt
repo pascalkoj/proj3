@@ -34,8 +34,10 @@ class MathEndScreen : Fragment() {
 
     fun GetScoreString() : String
     {
-        // TODO
-        return "score of maxscore"
+        val mathapp = MathApp.instance
+        val correct = mathapp.numCorrect
+        val total = mathapp.numQuestions
+        return "$correct of $total"
     }
 
     override fun onCreateView(
@@ -50,6 +52,7 @@ class MathEndScreen : Fragment() {
 
         val startOverButton = view.findViewById<Button>(R.id.bStartOver)
         startOverButton.setOnClickListener {
+            MathApp.instance.Reset()
             val fm = parentFragmentManager
             if (fm != null)
             {

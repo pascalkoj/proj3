@@ -1,14 +1,16 @@
 package com.example.project3
 
+//import android.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.NavHostFragment
+import android.widget.RadioGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,8 +44,51 @@ class StartScreen : Fragment() {
 
         var mathapp = MathApp.instance
 
+        // more or less questions
+        val numQuestionsText = view.findViewById<TextView>(R.id.textNumQuestions)
+        numQuestionsText.setText(mathapp.numQuestions.toString())
+
+        val moreQuestionsButton = view.findViewById<Button>(R.id.bMoreQuestions)
+        moreQuestionsButton.setOnClickListener {
+            mathapp.numQuestions += 1
+            numQuestionsText.setText(mathapp.numQuestions.toString())
+        }
+        val lessQuestionsButton = view.findViewById<Button>(R.id.bLessQuestions)
+        lessQuestionsButton.setOnClickListener{
+            mathapp.numQuestions = Math.max(1, mathapp.numQuestions-1)
+            numQuestionsText.setText(mathapp.numQuestions.toString())
+        }
+        // ----------------------------------------
+        // easy, medium, hard
+        val difficultyRadioGroup = view.findViewById<RadioGroup>(R.id.radioGroupDifficulty)
+        difficultyRadioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+            if (checkedId == R.id.bEasy) {
+                mathapp.difficultyLevel = DifficultyLevel.EASY
+            } else if (checkedId == R.id.bMedium) {
+                mathapp.difficultyLevel = DifficultyLevel.MEDIUM
+            } else if (checkedId == R.id.bHard) {
+                mathapp.difficultyLevel = DifficultyLevel.HARD
+            }
+        })
+        // ------------------------------------------
+        // addition/subtraction/mult/div
+        val operationRadioGroup = view.findViewById<RadioGroup>(R.id.radioGroupOperations)
+        operationRadioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+            if (checkedId == R.id.bAddition) {
+                mathapp.operationMode = OperationMode.ADDITION
+            } else if (checkedId == R.id.bMultiplication) {
+                mathapp.operationMode = OperationMode.MULTIPLICATION
+            } else if (checkedId == R.id.bDivision) {
+                mathapp.operationMode = OperationMode.DIVISION
+            } else if (checkedId == R.id.bSubtraction) {
+                mathapp.operationMode = OperationMode.SUBTRACTION
+            }
+        })
+        // -------------------------------------------
+        // start button
         val startButton = view.findViewById<Button>(R.id.bStart)
         startButton.setOnClickListener {
+            mathapp.StartMathScreen()
             val fm = parentFragmentManager
             if (fm != null)
             {

@@ -26,57 +26,61 @@
             android:orientation="horizontal">
 
             <RadioGroup
+                android:id="@+id/radioGroupDifficulty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:checkedButton="@id/bEasy">
 
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/bEasy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Easy" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/bMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Medium" />
 
                 <RadioButton
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/bHard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hard" />
             </RadioGroup>
 
             <RadioGroup
+                android:id="@+id/radioGroupOperations"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:checkedButton="@id/bAddition">
 
                 <RadioButton
-                    android:id="@+id/radioButton8"
+                    android:id="@+id/bAddition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Addition" />
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/bMultiplication"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Multiplication" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/bDivision"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Divison" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/bSubtraction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -98,21 +102,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/bLessQuestions"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="-" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textNumQuestions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="1"
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/bMoreQuestions"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="+" />
