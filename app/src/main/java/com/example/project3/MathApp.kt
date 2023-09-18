@@ -58,15 +58,15 @@ class MathApp {
     {
         if (difficultyLevel == DifficultyLevel.EASY)
         {
-            return (0..10).random()
+            return (0 until 10).random()
         }
         else if (difficultyLevel == DifficultyLevel.MEDIUM)
         {
-            return (0..25).random()
+            return (0 until 25).random()
         }
         else if (difficultyLevel == DifficultyLevel.HARD)
         {
-            return (0..50).random()
+            return (0 until 50).random()
         }
         return 0
     }
